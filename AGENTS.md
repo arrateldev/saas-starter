@@ -8,7 +8,7 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 - Arratel is the umbrella brand for this SaaS portfolio. The primary domain is `arratel.dev`, and the contact email is `contact@arratel.dev`.
 - `arratel.dev` is reserved for the Arratel homepage. This starter template can be tested on `saas.arratel.dev` when deployed.
 - Arratel brand colors are `#787ff6` as primary and `#69c4ff` as secondary/cyan. Theme variables live in `app/globals.css`; use the secondary color for subtle aura, glow, and brand-gradient accents rather than making every component blue.
-- Main product, company, domain, contact, social, and legal placeholder configuration lives in `lib/site-config.ts`.
+- Main brand, product, company, domain, contact, social, icon, and legal placeholder configuration lives in `lib/site-config.ts`.
 - Internationalization currently supports `de` and `en` in `lib/i18n/config.ts`; `defaultLocale` is `en`.
 - User-facing copy is centralized in `lib/i18n/messages.ts`.
 - The public product name in the header uses the local title font from `app/fonts/LexendExa_400Regular.ttf`, loaded in `app/layout.tsx` as `--font-title` and exposed through the `.font-title` utility in `app/globals.css`.
@@ -26,7 +26,7 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 - Dashboard routes live under `app/[locale]/(dashboard)`.
 - `app/[locale]/(dashboard)/dashboard/layout.tsx` reuses the legacy dashboard layout from `app/(dashboard)/dashboard/layout.tsx` and provides SWR fallback data for `/api/user` and `/api/team`.
 - Legal pages include localized `datenschutz`, `impressum`, and `terms` pages.
-- The localized `/links` page is a reusable link-in-bio/social links page. It should stay generic and read website, contact email, claim, and social profiles from `lib/site-config.ts`.
+- The localized `/links` page is a reusable link-in-bio/social links page. It should stay generic and read website, contact email, product claim, and social profiles from `lib/site-config.ts` helpers.
 - There are still legacy non-localized route groups under `app/(dashboard)` and `app/(login)`. Be careful when changing shared behavior: confirm whether the localized or legacy route is the active target.
 - API routes live under `app/api`.
 - Feature flags live in `lib/config/feature-flags.ts`. `DEPLOYMENT_MODE=minimal` is for static/landing launches without auth, database, or Stripe; `full` enables the SaaS flows.
@@ -61,12 +61,12 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 
 - Prefer existing components in `components/ui` and existing shared components before adding new primitives.
 - Use `lucide-react` icons when icon buttons or common UI symbols are needed.
-- Use `react-icons/fa6` for brand/social icons in `components/site-chrome.tsx`; configured social links live in `siteConfig.social`.
+- Use `react-icons/fa6` for brand/social icons in `components/social-icons.tsx`; public social links should be read through `getPublicSocialLinks()` so product-specific socials can override the Arratel fallback.
 - The shared `components/app-logo.tsx` renders `/favicon.ico` with `object-contain` and no border radius so logo artwork is not clipped in the header/footer.
 - Keep text additions localized in `lib/i18n/messages.ts` for both `de` and `en`.
 - German user-facing copy must use proper German characters (`ä`, `ö`, `ü`, `Ä`, `Ö`, `Ü`, `ß`) instead of ASCII transliterations such as `ae`, `oe`, `ue`, or `ss`, except inside code identifiers, URLs, slugs, env vars, or other technical values.
 - When adding routes or links, route through the locale helpers in `lib/i18n/config.ts` where applicable.
-- Update `lib/site-config.ts` for product/company/social/legal/privacy metadata rather than scattering constants through pages. `product.name` is the public brand/product; `product.claim` is the short social/link-in-bio claim; `company.legalName` is the legal provider and may be a natural person. Legal fields such as address, phone, representative, register, and VAT ID may intentionally be `null` until real data exists; do not reintroduce fake legal placeholders. Social profile links live under `siteConfig.social`. Privacy service providers and retention copy live under `siteConfig.privacy`.
+- Update `lib/site-config.ts` for brand/product/company/social/legal/privacy metadata rather than scattering constants through pages. `brand` is Arratel as the umbrella brand; `product` is the current SaaS/product. `product.name`, `product.claim`, `product.urls`, `product.icons`, and optional `product.social` should be changed per copied product. `brand.social` is the Arratel fallback; use `getPublicSocialLinks()`, `getPublicContactEmail()`, and `getBaseUrl()` instead of reading fallback fields manually. `company.legalName` is the legal provider and may be a natural person. Legal fields such as address, phone, representative, register, and VAT ID may intentionally be `null` until real data exists; do not reintroduce fake legal placeholders. Privacy service providers and retention copy live under `siteConfig.privacy`.
 - Current Arratel social handles are `arrateldev` on GitHub, X, Instagram, TikTok, YouTube, Product Hunt, npm, Docker Hub, and Reddit; LinkedIn uses `https://www.linkedin.com/company/arrateldev`; Bluesky uses `https://bsky.app/profile/arrateldev.bsky.social`.
 - Keep the brand claim concise and consistent across social profiles; the current preferred line is `Precision software.`.
 - If database tables or relations change, update `lib/db/schema.ts`, generate a migration, and check query helpers in `lib/db/queries.ts`.

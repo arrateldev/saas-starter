@@ -15,7 +15,7 @@ const messages = {
       dashboard: 'Dashboard',
       features: 'Features',
       legal: 'Rechtliches',
-      company: siteConfig.product.companyDisplayName,
+      company: siteConfig.brand.name,
       allRightsReserved: 'Alle Rechte vorbehalten.',
       backToHome: 'Zur Startseite'
     },
@@ -310,7 +310,7 @@ const messages = {
       dashboard: 'Dashboard',
       features: 'Features',
       legal: 'Legal',
-      company: siteConfig.product.companyDisplayName,
+      company: siteConfig.brand.name,
       allRightsReserved: 'All rights reserved.',
       backToHome: 'Back to home'
     },

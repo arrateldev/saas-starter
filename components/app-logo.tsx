@@ -11,7 +11,7 @@ export function AppLogo({
 }) {
   return (
     <Image
-      src="/favicon.ico"
+      src={siteConfig.product.icons.logo}
       alt={`${siteConfig.product.name} logo`}
       width={64}
       height={64}

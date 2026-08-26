@@ -14,13 +14,13 @@ Personal starter template for Arratel SaaS products. It is built with Next.js Ap
 
 ## First Steps After Copying
 
-1. Update `lib/site-config.ts` with product name, metadata, domain, contact, and legal data.
+1. Update `lib/site-config.ts` with product name, metadata, domain, icons, optional product social profiles, contact, and legal data. Keep `brand` for Arratel as the umbrella brand.
 2. Update `lib/i18n/messages.ts` for all visible German and English product copy.
 3. Replace the demo product components in `features/pdf-merge-demo` with the real product experience.
 4. Copy `.env.example` to `.env` and fill the values for your mode.
 5. Run `npm run build` before deploying.
 
-The social links page is available at `/links` for link-in-bio use. It reads website, contact email, claim, and social profiles from `lib/site-config.ts`.
+The social links page is available at `/links` for link-in-bio use. It reads product website, contact email, claim, and social profiles from `lib/site-config.ts`. Product socials can override the Arratel brand fallback.
 
 ## Deployment Modes
 
@@ -141,4 +141,4 @@ Important production values:
 
 ## Legal Notes
 
-The legal content is starter content, not legal advice. The imprint page stays visible in all deployment modes. `lib/site-config.ts` intentionally separates the public brand from the legal provider and allows address, phone, representative, commercial register, and VAT ID to stay empty until real data exists. Before launching publicly, review the imprint, privacy policy, and terms for the specific product and jurisdiction.
+The legal content is starter content, not legal advice. The imprint page stays visible in all deployment modes. `lib/site-config.ts` intentionally separates the Arratel umbrella brand, the current product, and the legal provider. Address, phone, representative, commercial register, and VAT ID may stay empty until real data exists. Before launching publicly, review the imprint, privacy policy, and terms for the specific product and jurisdiction.

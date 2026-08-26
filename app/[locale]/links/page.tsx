@@ -5,7 +5,12 @@ import { AppLogo } from '@/components/app-logo';
 import { socialIcons } from '@/components/social-icons';
 import { localizePath, type Locale } from '@/lib/i18n/config';
 import { getMessages } from '@/lib/i18n/messages';
-import { siteConfig } from '@/lib/site-config';
+import {
+  getBaseUrl,
+  getPublicContactEmail,
+  getPublicSocialLinks,
+  siteConfig
+} from '@/lib/site-config';
 
 export function generateMetadata({
   params
@@ -27,7 +32,9 @@ export default async function LinksPage({
 }) {
   const { locale } = await params;
   const t = getMessages(locale);
-  const contactEmail = siteConfig.company.contact.email;
+  const contactEmail = getPublicContactEmail();
+  const baseUrl = getBaseUrl();
+  const socialLinks = getPublicSocialLinks();
 
   return (
     <div className="bg-background">
@@ -38,6 +45,9 @@ export default async function LinksPage({
             <h1 className="font-title mt-5 text-3xl font-semibold tracking-normal text-foreground sm:text-4xl">
               {siteConfig.product.name}
             </h1>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              {siteConfig.product.makerLabel}
+            </p>
             <p className="mt-3 text-base font-medium text-primary">
               {siteConfig.product.claim[locale]}
             </p>
@@ -48,7 +58,7 @@ export default async function LinksPage({
 
           <div className="animate-enter-delay-1 mt-8 flex flex-col gap-3">
             <Link
-              href={siteConfig.urls.defaultBaseUrl}
+              href={baseUrl}
               target="_blank"
               rel="noreferrer"
               className="animate-enter group flex h-14 items-center gap-3 rounded-md border border-border bg-card px-4 text-card-foreground shadow-xs transition-colors hover:border-primary/50 hover:bg-secondary"
@@ -83,7 +93,7 @@ export default async function LinksPage({
               />
             </Link>
 
-            {siteConfig.social.map((item, index) => {
+            {socialLinks.map((item, index) => {
               const SocialIcon = socialIcons[item.icon];
 
               return (

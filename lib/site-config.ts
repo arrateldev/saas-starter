@@ -29,31 +29,131 @@ export type SocialIconName =
   | 'dockerHub'
   | 'reddit';
 
-type SocialLink = {
+export type SocialLink = {
   id: SocialIconName;
   label: string;
   href: string;
   icon: SocialIconName;
 };
 
+const arratelSocial = [
+  {
+    id: 'github',
+    label: 'GitHub',
+    href: 'https://github.com/arrateldev',
+    icon: 'github'
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/arrateldev',
+    icon: 'linkedin'
+  },
+  {
+    id: 'x',
+    label: 'X',
+    href: 'https://x.com/arrateldev',
+    icon: 'x'
+  },
+  {
+    id: 'bluesky',
+    label: 'Bluesky',
+    href: 'https://bsky.app/profile/arrateldev.bsky.social',
+    icon: 'bluesky'
+  },
+  {
+    id: 'instagram',
+    label: 'Instagram',
+    href: 'https://www.instagram.com/arrateldev',
+    icon: 'instagram'
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@arrateldev',
+    icon: 'tiktok'
+  },
+  {
+    id: 'youtube',
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@arrateldev',
+    icon: 'youtube'
+  },
+  {
+    id: 'productHunt',
+    label: 'Product Hunt',
+    href: 'https://www.producthunt.com/@arrateldev',
+    icon: 'productHunt'
+  },
+  {
+    id: 'npm',
+    label: 'npm',
+    href: 'https://www.npmjs.com/~arrateldev',
+    icon: 'npm'
+  },
+  {
+    id: 'dockerHub',
+    label: 'Docker Hub',
+    href: 'https://hub.docker.com/u/arrateldev',
+    icon: 'dockerHub'
+  },
+  {
+    id: 'reddit',
+    label: 'Reddit',
+    href: 'https://www.reddit.com/user/arrateldev',
+    icon: 'reddit'
+  }
+] satisfies SocialLink[];
+
 export const siteConfig = {
-  product: {
+  brand: {
     name: 'Arratel',
-    companyDisplayName: 'Arratel',
+    domain: 'arratel.dev',
+    urls: {
+      homepage: 'https://arratel.dev'
+    },
+    contact: {
+      email: 'contact@arratel.dev'
+    },
+    icons: {
+      logo: '/favicon.ico'
+    },
     claim: {
       de: 'Precision software.',
       en: 'Precision software.'
     },
+    social: arratelSocial
+  },
+  product: {
+    name: 'SaaS Starter',
+    makerLabel: 'by Arratel',
+    contact: {
+      email: null as string | null
+    },
+    urls: {
+      defaultBaseUrl: 'https://saas.arratel.dev'
+    },
+    icons: {
+      logo: '/favicon.ico',
+      favicon: '/favicon.ico',
+      appIcon: '/icon.png',
+      appleIcon: '/apple-icon.png'
+    },
+    claim: {
+      de: 'Ein Starter für fokussierte SaaS-Produkte.',
+      en: 'A starter for focused SaaS products.'
+    },
     metadata: {
       title: {
-        de: 'Arratel',
-        en: 'Arratel'
+        de: 'SaaS Starter',
+        en: 'SaaS Starter'
       },
       description: {
-        de: 'Arratel entwickelt schlanke SaaS-Produkte für nützliche digitale Workflows.',
-        en: 'Arratel builds focused SaaS products for useful digital workflows.'
+        de: 'Ein Arratel SaaS-Starter für nützliche digitale Workflows.',
+        en: 'An Arratel SaaS starter for useful digital workflows.'
       }
-    }
+    },
+    social: null as SocialLink[] | null
   },
   company: {
     legalName: 'Ricardo Valente de Matos',
@@ -66,77 +166,6 @@ export const siteConfig = {
     register: null as { court: LocalizedText; number: string } | null,
     vatId: null as string | null
   },
-  urls: {
-    defaultBaseUrl: 'https://arratel.dev'
-  },
-  social: [
-    {
-      id: 'github',
-      label: 'GitHub',
-      href: 'https://github.com/arrateldev',
-      icon: 'github'
-    },
-    {
-      id: 'linkedin',
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/company/arrateldev',
-      icon: 'linkedin'
-    },
-    {
-      id: 'x',
-      label: 'X',
-      href: 'https://x.com/arrateldev',
-      icon: 'x'
-    },
-    {
-      id: 'bluesky',
-      label: 'Bluesky',
-      href: 'https://bsky.app/profile/arrateldev.bsky.social',
-      icon: 'bluesky'
-    },
-    {
-      id: 'instagram',
-      label: 'Instagram',
-      href: 'https://www.instagram.com/arrateldev',
-      icon: 'instagram'
-    },
-    {
-      id: 'tiktok',
-      label: 'TikTok',
-      href: 'https://www.tiktok.com/@arrateldev',
-      icon: 'tiktok'
-    },
-    {
-      id: 'youtube',
-      label: 'YouTube',
-      href: 'https://www.youtube.com/@arrateldev',
-      icon: 'youtube'
-    },
-    {
-      id: 'productHunt',
-      label: 'Product Hunt',
-      href: 'https://www.producthunt.com/@arrateldev',
-      icon: 'productHunt'
-    },
-    {
-      id: 'npm',
-      label: 'npm',
-      href: 'https://www.npmjs.com/~arrateldev',
-      icon: 'npm'
-    },
-    {
-      id: 'dockerHub',
-      label: 'Docker Hub',
-      href: 'https://hub.docker.com/u/arrateldev',
-      icon: 'dockerHub'
-    },
-    {
-      id: 'reddit',
-      label: 'Reddit',
-      href: 'https://www.reddit.com/user/arrateldev',
-      icon: 'reddit'
-    }
-  ] satisfies SocialLink[],
   billing: {
     portalHeadline: 'Manage your subscription'
   },
@@ -198,5 +227,15 @@ export function getSiteMetadata(locale: Locale) {
 }
 
 export function getBaseUrl() {
-  return process.env.BASE_URL || siteConfig.urls.defaultBaseUrl;
+  return process.env.BASE_URL || siteConfig.product.urls.defaultBaseUrl;
+}
+
+export function getPublicContactEmail() {
+  return siteConfig.product.contact.email || siteConfig.brand.contact.email;
+}
+
+export function getPublicSocialLinks() {
+  return siteConfig.product.social?.length
+    ? siteConfig.product.social
+    : siteConfig.brand.social;
 }

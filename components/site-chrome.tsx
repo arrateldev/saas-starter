@@ -20,7 +20,7 @@ import {
 import { getMessages } from '@/lib/i18n/messages';
 import { AppLogo } from '@/components/app-logo';
 import { socialIcons } from '@/components/social-icons';
-import { siteConfig } from '@/lib/site-config';
+import { getPublicSocialLinks, siteConfig } from '@/lib/site-config';
 
 type SiteChromeFeatures = {
   auth: boolean;
@@ -43,6 +43,7 @@ export function SiteChrome({
   features: SiteChromeFeatures;
 }) {
   const t = getMessages(locale);
+  const socialLinks = getPublicSocialLinks();
 
   return (
     <section className="flex min-h-screen flex-col">
@@ -57,11 +58,14 @@ export function SiteChrome({
                 {siteConfig.product.name}
               </span>
             </div>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              {siteConfig.product.makerLabel}
+            </p>
             <p className="mt-3 max-w-sm text-sm leading-7 text-slate-400">
               {t.home.footerDescription}
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {siteConfig.social.map((item) => {
+              {socialLinks.map((item) => {
                 const SocialIcon = socialIcons[item.icon];
 
                 return (

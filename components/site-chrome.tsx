@@ -157,8 +157,14 @@ export function SiteChrome({
         <div className="border-t border-slate-800/80">
           <div className="section-shell flex flex-col gap-2 py-4 text-sm text-slate-500 md:flex-row md:justify-between">
             <span>
-              (c) {new Date().getFullYear()} {t.common.company}.{' '}
-              {t.common.allRightsReserved}
+              (c) {new Date().getFullYear()} {siteConfig.product.name}{' '}
+              <Link
+                href={siteConfig.brand.urls.homepage}
+                className="font-medium text-slate-400 transition-colors hover:text-white"
+              >
+                {siteConfig.product.makerLabel}
+              </Link>
+              . {t.common.allRightsReserved}
             </span>
           </div>
         </div>

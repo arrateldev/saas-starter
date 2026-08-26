@@ -23,6 +23,7 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 - Localized routes live under `app/[locale]`.
 - `app/[locale]/layout.tsx` validates the locale, loads the current user, and wraps pages in `components/site-chrome.tsx`.
 - `components/site-chrome.tsx` owns the public header, mobile navigation, language switcher, auth menu, and footer.
+- Footer copyright should keep the current product visible and link `product.makerLabel` to `brand.urls.homepage`, so copied products retain a subtle Arratel backlink.
 - Dashboard routes live under `app/[locale]/(dashboard)`.
 - `app/[locale]/(dashboard)/dashboard/layout.tsx` reuses the legacy dashboard layout from `app/(dashboard)/dashboard/layout.tsx` and provides SWR fallback data for `/api/user` and `/api/team`.
 - Legal pages include localized `datenschutz`, `impressum`, and `terms` pages.

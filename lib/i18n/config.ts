@@ -6,8 +6,8 @@ export const defaultLocale: Locale = 'en';
 
 export const legalRoutePaths = {
   imprint: {
-    de: '/impressum',
-    en: '/impressum'
+    de: '/imprint',
+    en: '/imprint'
   },
   privacy: {
     de: '/privacy-policy',

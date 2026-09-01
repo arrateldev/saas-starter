@@ -26,7 +26,7 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 - Footer copyright should keep the current product visible and link `product.makerLabel` to `brand.urls.homepage`, so copied products retain a subtle Arratel backlink.
 - Dashboard routes live under `app/[locale]/(dashboard)`.
 - `app/[locale]/(dashboard)/dashboard/layout.tsx` reuses the legacy dashboard layout from `app/(dashboard)/dashboard/layout.tsx` and provides SWR fallback data for `/api/user` and `/api/team`.
-- Legal pages use stable English slugs for all locales: `/privacy-policy`, `/terms-of-use`, and `/impressum`. Use `localizeLegalPath()` and `legalRoutePaths` from `lib/i18n/config.ts`; old `/datenschutz` and `/terms` routes should only redirect.
+- Legal pages use stable English slugs for all locales: `/privacy-policy`, `/terms-of-use`, and `/imprint`. Use `localizeLegalPath()` and `legalRoutePaths` from `lib/i18n/config.ts`; old `/datenschutz`, `/terms`, and `/impressum` routes should only redirect.
 - The localized `/links` page is a reusable link-in-bio/social links page. It should stay generic and read website, contact email, product claim, and social profiles from `lib/site-config.ts` helpers.
 - There are still legacy non-localized route groups under `app/(dashboard)` and `app/(login)`. Be careful when changing shared behavior: confirm whether the localized or legacy route is the active target.
 - API routes live under `app/api`.

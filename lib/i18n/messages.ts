@@ -381,7 +381,7 @@ const messages = {
       legalLinks: {
         imprint: 'Imprint',
         privacy: 'Privacy Policy',
-        terms: 'Terms of Service'
+        terms: 'Terms'
       }
     },
     links: {

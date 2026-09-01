@@ -4,6 +4,23 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
+export const legalRoutePaths = {
+  imprint: {
+    de: '/impressum',
+    en: '/impressum'
+  },
+  privacy: {
+    de: '/privacy-policy',
+    en: '/privacy-policy'
+  },
+  terms: {
+    de: '/terms-of-use',
+    en: '/terms-of-use'
+  }
+} as const satisfies Record<string, Record<Locale, `/${string}`>>;
+
+export type LegalRouteKey = keyof typeof legalRoutePaths;
+
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
@@ -34,6 +51,10 @@ export function localizePath(locale: Locale, pathname: string) {
 
   const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
   return normalized === '/' ? `/${locale}` : `/${locale}${normalized}`;
+}
+
+export function localizeLegalPath(locale: Locale, route: LegalRouteKey) {
+  return localizePath(locale, legalRoutePaths[route][locale]);
 }
 
 export function replaceLocaleInPathname(pathname: string, locale: Locale) {

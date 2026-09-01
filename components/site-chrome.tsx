@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { signOut } from '@/app/(login)/actions';
 import {
+  localizeLegalPath,
   localizePath,
   replaceLocaleInPathname,
   type Locale
@@ -133,19 +134,19 @@ export function SiteChrome({
             </h3>
             <div className="mt-3 flex flex-col gap-2 text-sm text-slate-400">
               <Link
-                href={localizePath(locale, '/impressum')}
+                href={localizeLegalPath(locale, 'imprint')}
                 className="transition-colors hover:text-white"
               >
                 {t.home.legalLinks.imprint}
               </Link>
               <Link
-                href={localizePath(locale, '/datenschutz')}
+                href={localizeLegalPath(locale, 'privacy')}
                 className="transition-colors hover:text-white"
               >
                 {t.home.legalLinks.privacy}
               </Link>
               <Link
-                href={localizePath(locale, '/terms')}
+                href={localizeLegalPath(locale, 'terms')}
                 className="transition-colors hover:text-white"
               >
                 {t.home.legalLinks.terms}

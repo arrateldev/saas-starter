@@ -425,7 +425,7 @@ const legalContent: Record<Locale, LegalContent> = {
     },
     terms: {
       eyebrow: 'Legal',
-      title: 'Terms of Service',
+      title: 'Terms',
       intro:
         'These terms govern the use of Arratel and SaaS products based on it unless product-specific terms state otherwise.',
       sections: [

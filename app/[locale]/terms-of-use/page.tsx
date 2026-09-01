@@ -1,7 +1,8 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { LegalPage, LegalSection } from '@/components/legal-page';
 import { buildLocalizedMetadata } from '@/lib/i18n/metadata';
-import { isLocale, legalRoutePaths, localizeLegalPath } from '@/lib/i18n/config';
+import { isLocale, legalRoutePaths } from '@/lib/i18n/config';
 import { getLegalContent } from '@/lib/legal-content';
 
 export async function generateMetadata({
@@ -25,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function TermsPage({
+export default async function TermsOfUsePage({
   params
 }: {
   params: Promise<{ locale: string }>;
@@ -36,5 +37,17 @@ export default async function TermsPage({
     notFound();
   }
 
-  redirect(localizeLegalPath(locale, 'terms'));
+  const content = getLegalContent(locale).terms;
+
+  return (
+    <LegalPage eyebrow={content.eyebrow} title={content.title} intro={content.intro}>
+      {content.sections.map((section) => (
+        <LegalSection key={section.title} title={section.title}>
+          {section.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </LegalSection>
+      ))}
+    </LegalPage>
+  );
 }

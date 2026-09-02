@@ -30,6 +30,7 @@ This file is the working memory for Codex in this repository. Keep it updated wh
 - The localized `/links` page is a reusable link-in-bio/social links page. It should stay generic and read website, contact email, product claim, and social profiles from `lib/site-config.ts` helpers.
 - There are still legacy non-localized route groups under `app/(dashboard)` and `app/(login)`. Be careful when changing shared behavior: confirm whether the localized or legacy route is the active target.
 - API routes live under `app/api`.
+- `app/api/health/route.ts` exposes a public, dependency-light healthcheck at `/api/health` for external uptime checks. Keep it free of database, auth, and Stripe calls so Arratel can ping product sites even when optional SaaS services are unavailable.
 - Feature flags live in `lib/config/feature-flags.ts`. `DEPLOYMENT_MODE=minimal` is for static/landing launches without auth, database, or Stripe; `full` enables the SaaS flows.
 
 ## Auth, Teams, And Data Access
